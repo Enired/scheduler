@@ -12,7 +12,6 @@ const DayList = function(props){
     selected = {props.value === element.name}
     onChange = {()=>props.onChange(element.name)}
     />
-    
   )
   })
 
