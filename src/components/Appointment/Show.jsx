@@ -37,7 +37,7 @@ const Show = (props) => {
           src="images/trash.png" 
           alt="Delete" 
           className="appointment__actions-button" 
-          onClick={onDelete}
+          onClick={()=>onDelete()}
           />
 
         </section>

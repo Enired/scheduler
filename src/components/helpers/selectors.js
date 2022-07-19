@@ -21,6 +21,7 @@ export function getInterview(state, interview){
    if(!interview){
     return null
    }
+
    const interviewerId = interview.interviewer //Returns an id number
    const student = interview.student
    const interviewer = state.interviewers[interviewerId] //Return Object

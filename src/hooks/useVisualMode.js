@@ -6,26 +6,27 @@ export const useVisualMode = (initialMode) => {
 
 
   const transition = (newMode, replace=false) => {    
+    setMode(newMode)
+
     if(replace){
       const newHistory = [...history]
       newHistory.pop()
-      setHistory(newHistory)
+      setHistory([...newHistory, newMode])
+    } else{
+      setHistory([...history, newMode])
     }
     
-    setMode(newMode)
-    setHistory(
-      (prev) => {
-        return [...prev, newMode]
-      }
-      )
     } 
       
   const back = () => {
+  
     const newHistory = [...history]
     if(newHistory.length >= 2){
       newHistory.pop()
     }
     setHistory(newHistory)
+
+
     setMode(newHistory[newHistory.length-1])
   }
 

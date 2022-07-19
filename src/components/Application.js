@@ -1,9 +1,9 @@
 import React from "react";
 import "components/DayList"
 import "components/InterviewerListItem"
-import { useState } from "react";
-import axios from "axios";
-import { useEffect } from "react";
+
+
+
 
 
 import "components/Application.scss";
@@ -11,35 +11,16 @@ import "components/Application.scss";
 import DayList from "components/DayList";
 import "components/Appointment"
 import Appointment from "components/Appointment";
-
 import { getAppointmentsForDay, getInterview, getInterviewersForDay } from "./helpers/selectors";
 
+import { useApplicationData } from "hooks/useApplicationData";
+
 export default function Application(props) {
+
+  const {state, setDay, bookInterview, cancelInterview } = useApplicationData()
+
   
-  const [state, setState] = useState({day: 'Monday', days: [], appointments :{}})
-  
-  const setDay = day => setState({...state, day})
-  
-  
-  const daysUrl = "http://localhost:8001/api/days"
-  const appointmentsUrl = "http://localhost:8001/api/appointments"
-  const interviewerURL = "http://localhost:8001/api/interviewers"
-  
-  
-  useEffect(()=>{
-    const getDays = axios.get(daysUrl)
-    const getAppts = axios.get(appointmentsUrl)
-    const getInt = axios.get(interviewerURL)
-    Promise.all([getDays, getAppts, getInt])
-    .then(res => {
-      const days = res[0].data
-      const appointments = res[1].data
-      const interviewers = res[2].data
-      
-      
-      setState((prev)=>({...prev, days, appointments, interviewers}))      
-    })
-  }, [])
+  //APPOINTMENTS
   const dailyAppointments = getAppointmentsForDay(state, state.day);
   const dailyInterviewers = getInterviewersForDay(state, state.day)
   
@@ -47,15 +28,17 @@ export default function Application(props) {
   ((e)=>{
     const key = e.id;
     const interview = getInterview(state, e.interview);
+
     return (
     <Appointment 
     key={key} 
     {... e}
     interview = {interview}
     interviewers = {dailyInterviewers}
+    bookInterview = {bookInterview}
+    cancelInterview = {cancelInterview}
     />)
   })
-
   return (
     <main className="layout">
       <section className="sidebar">

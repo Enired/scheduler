@@ -14,7 +14,7 @@ const Error = (props) => {
       src="images/close.png" 
       alt="Close" 
       className="appointment__error-close" 
-      onClick={onClose}
+      onClick={()=>onClose()}
       />
     </main>
   )
