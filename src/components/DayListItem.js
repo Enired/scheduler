@@ -20,7 +20,7 @@ const DayListItem = function(props) {
   return(
 
 
-    <li onClick={props.onChange} className={dayClass}>
+    <li onClick={props.onChange} className={dayClass} data-testid={'day'}>
       <h2  className="text--regular">{props.name}</h2>
       <h3 className="text--light">{formatSpots(props.spots)}</h3>
     </li>
