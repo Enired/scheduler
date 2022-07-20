@@ -46,21 +46,52 @@ describe('Application', ()=>{
 
   })
 
-  it("loads data, books an interview and reduces the spots remaining for Monday by 1", async () => {
-    // 1. Render the Application.
+  it("loads data, cancels an interview and increases the spots remaining for Monday by 1", async () => {
+  
     const { container } = render(<Application />);
-  
-    // 2. Wait until the text "Archie Cohen" is displayed.
     await waitForElement(() => getByText(container, "Archie Cohen"));
+    const appointments =  getAllByTestId(container, "appointment")
+    const appointment = appointments[1]
+
   
-    // 3. Click the "Add" button on the first empty appointment.
-    // 4. Enter the name "Lydia Miller-Jones" into the input with the placeholder "Enter Student Name".
-    // 5. Click the first interviewer in the list.
-    // 6. Click the "Save" button on that same appointment.
-    // 7. Check that the element with the text "Saving" is displayed.
-    // 8. Wait until the element with the text "Lydia Miller-Jones" is displayed.
-    // 9. Check that the DayListItem with the text "Monday" also has the text "no spots remaining".
+    fireEvent.click(getByAltText(appointment, "Delete"));
+
+    expect(getByText(appointment, /are you sure you want to delete this?/i))
+
+    fireEvent.click(getByText(appointment, 'Confirm'))
+
+    expect(getByText(appointment, 'DELETING')).toBeInTheDocument()
+
+    await waitForElement(()=> getByAltText(appointment, "Add"))
+
+    const day = getAllByTestId(container, 'day').find(day=>queryByText(day, "Monday"))
+
+    expect(getByText(day, '2 spots remaining')).toBeInTheDocument()
   });
+
+  it("loads data, edits an interview and keeps the spots remaining for Monday the same", async() => {
+    const { container } = render(<Application />);
+    await waitForElement(() => getByText(container, "Archie Cohen"));
+    const appointments =  getAllByTestId(container, "appointment")
+    const appointment = appointments[1]
+
+    fireEvent.click(getByAltText(appointment, 'Edit'))
+
+    // expect(getByText(appointment, "Archie Cohen")).toBeInTheDocument()
+
+    fireEvent.change(getByPlaceholderText(appointment, /enter student name/i), {target: {value: 'Derine Banis'}})
+
+    fireEvent.click(getByAltText(appointment, 'Sylvia Palmer'))
+
+    // expect(getByTestId(appointment, "student-name-input")).not.toBeInTheDocument()
+
+    
+
+
+
+
+
+  })
 
 
 
