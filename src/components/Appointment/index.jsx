@@ -31,9 +31,9 @@ const Appointment = (props) => {
 
     //WITH save()
     const save = (name, interviewer) => {
-      if(!name || !interviewer){
-        return
-      }
+      // if(!name || !interviewer){
+      //   return
+      // }
 
       const someInterview = {
         student: name,
