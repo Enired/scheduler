@@ -69,6 +69,28 @@ describe('Application', ()=>{
     expect(getByText(day, '2 spots remaining')).toBeInTheDocument()
   });
 
+
+  it("loads data, shows the appointment again when the cancel is clicked", async () => {
+  
+    const { container } = render(<Application />);
+    await waitForElement(() => getByText(container, "Archie Cohen"));
+    const appointments =  getAllByTestId(container, "appointment")
+    const appointment = appointments[1]
+
+  
+    fireEvent.click(getByAltText(appointment, "Delete"));
+
+    expect(getByText(appointment, /are you sure you want to delete this?/i))
+
+    fireEvent.click(getByText(appointment, 'Cancel'))
+
+    await waitForElement(()=> getByText(appointment, "Archie Cohen"))
+
+    const day = getAllByTestId(container, 'day').find(day=>queryByText(day, "Monday"))
+
+    expect(getByText(day, '1 spot remaining')).toBeInTheDocument()
+  });
+
   it("loads data, edits an interview and keeps the spots remaining for Monday the same", async() => {
     const { container } = render(<Application />);
     await waitForElement(() => getByText(container, "Archie Cohen"));
