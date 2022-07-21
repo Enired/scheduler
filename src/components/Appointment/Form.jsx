@@ -5,7 +5,6 @@ import { useState } from "react";
 
 const Form = (props) => {
 
-
   const [student, setStudent ] = useState(props.student || "") //String
   const [interviewer, setInterviewer] = useState(props.interviewer || null) //Number
   const [error, setError] = useState("")
@@ -18,7 +17,6 @@ const Form = (props) => {
     setError('');
     setInterviewer(null);
   }
-
   const cancel = () => {
     reset();
     onCancel();
@@ -29,12 +27,10 @@ const Form = (props) => {
       setError('Student name cannot be blank');
       return;
     }
-
     if(interviewer === null) {
       setError('Please select an interviewer');
       return;
     }
-
     setError('');
 
     onSave(student, interviewer)
