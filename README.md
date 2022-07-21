@@ -7,7 +7,7 @@ React webapp for users to schedule interviews for students with different interv
 **This project was made for Lighthouse Labs Web Dev Bootcamp.*
 
 ## Published on Netlify
-🌐[Scheduler on Netlify](https://62d8e89a06a0206fb795be6e--merry-churros-3e4f93.netlify.app/)
+🌐[Scheduler on Netlify](https://merry-churros-3e4f93.netlify.app/)
 
 ## Setup
 
