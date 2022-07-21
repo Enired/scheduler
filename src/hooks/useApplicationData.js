@@ -28,10 +28,10 @@ export const useApplicationData = () => {
   }, [])
 
  
-const updateSpots = (state) => {
+const updateSpots = (state, appointments) => {
   const currentDayIndex = state.days.findIndex((day)=>day.name === state.day);
   const currentDay = state.days[currentDayIndex];
-  const spots = currentDay.appointments.filter((id)=>!state.appointments[id].interview).length
+  const spots = currentDay.appointments.filter((id)=>!appointments[id].interview).length
   const updatedDayObj = {...currentDay, spots};
   const updatedDays = [...state.days]
   updatedDays[currentDayIndex] = updatedDayObj;
@@ -63,11 +63,12 @@ const updateSpots = (state) => {
   return axios.put(`${appointmentsUrl}/${id}`, appointment)
   //  .then(()=>updateSpots(state))
     .then(()=>{
-      setState((prev)=>({...prev,appointments}))
+      const days = updateSpots(state,appointments)
+      setState((prev)=>({...prev,appointments, days}))
     })
-    .then(()=>{
-      setState((prev)=>({...prev, days:updateSpots(prev)}))
-    })
+    // .then(()=>{
+    //   setState((prev)=>({...prev, days:updateSpots(prev)}))
+    // })
 
   }
 
@@ -92,11 +93,12 @@ const cancelInterview = (id) => {
 
   return axios.delete(`${appointmentsUrl}/${id}`)
     .then(()=>{
+      const days = updateSpots(state, appointments)
       setState((prev)=>({...prev,appointments}))
     })
-    .then(()=>{
-      setState((prev)=>({...prev, days:updateSpots(prev)}))
-    })
+    // .then(()=>{
+    //   setState((prev)=>({...prev, days:updateSpots(prev)}))
+    // })
    
  }
  
