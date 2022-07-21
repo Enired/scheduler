@@ -1,4 +1,4 @@
-import { getAppointmentsForDay, getInterview, getInterviewersForDay} from "./selectors";
+import { getAppointmentsForDay, getInterview, getInterviewersForDay } from "./selectors";
 
 const state = {
   days: [
@@ -6,7 +6,7 @@ const state = {
       id: 1,
       name: "Monday",
       appointments: [1, 2, 3],
-      interviewers : [1, 2, 3]
+      interviewers: [1, 2, 3]
     },
     {
       id: 2,
@@ -32,7 +32,7 @@ const state = {
   },
 
   interviewers: {
-    "1": {  
+    "1": {
       "id": 1,
       "name": "Sylvia Palmer",
       "avatar": "https://i.imgur.com/LpaY82x.png"
@@ -42,20 +42,20 @@ const state = {
       name: "Tori Malcolm",
       avatar: "https://i.imgur.com/Nmx0Qxo.png"
     },
-    "3": { 
-      id: 3, 
-      name: "Mildred Nazir", 
-      avatar: "https://i.imgur.com/T2WwVfS.png" 
+    "3": {
+      id: 3,
+      name: "Mildred Nazir",
+      avatar: "https://i.imgur.com/T2WwVfS.png"
     },
-    "4": { 
-      id: 4, 
-      name: "Cohana Roy", 
-      avatar: "https://i.imgur.com/FK8V841.jpg" 
+    "4": {
+      id: 4,
+      name: "Cohana Roy",
+      avatar: "https://i.imgur.com/FK8V841.jpg"
     },
-    "5": { 
-      id: 5, 
-      name: "Sven Jones", 
-      avatar: "https://i.imgur.com/twYrpay.jpg" 
+    "5": {
+      id: 5,
+      name: "Sven Jones",
+      avatar: "https://i.imgur.com/twYrpay.jpg"
     }
   }
 };

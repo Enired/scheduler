@@ -1,6 +1,6 @@
-describe('Appointments', ()=>{
-  beforeEach(()=>{
-    cy.request('GET','/api/debug/reset');
+describe('Appointments', () => {
+  beforeEach(() => {
+    cy.request('GET', '/api/debug/reset');
     cy.visit("/");
     cy.contains("Monday");
   })
@@ -16,15 +16,17 @@ describe('Appointments', ()=>{
       .click()
     cy.contains('Save')
       .click()
-    cy.contains('.appointment__card--show','Lydia Miller-Jones')
+    cy.contains('.appointment__card--show', 'Lydia Miller-Jones')
     cy.contains('.appointment__card--show', 'Sylvia Palmer');
   });
 
-  it('should edit an interview', ()=>{
+  it('should edit an interview', () => {
     cy.contains('[data-testid=appointment]', 'Archie Cohen')
     cy.get('[alt=Edit]')
       .first()
-      .click({force:true})
+      .click({
+        force: true
+      })
     cy.get('[alt="Tori Malcolm"]')
       .click()
     cy.get('input')
@@ -32,12 +34,14 @@ describe('Appointments', ()=>{
       .type('Octavio Silva')
     cy.contains('Save')
       .click()
-    cy.contains('.appointment__card--show','Octavio Silva')
+    cy.contains('.appointment__card--show', 'Octavio Silva')
     cy.contains('.appointment__card--show', 'Tori Malcolm');
   })
-  it('should cancel an interview', ()=>{
+  it('should cancel an interview', () => {
     cy.get('[alt=Delete]')
-      .click({force:true})
+      .click({
+        force: true
+      })
     cy.contains('Confirm')
       .click()
     cy.contains('DELETING')

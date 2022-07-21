@@ -2,11 +2,11 @@ import React from "react";
 
 const Show = (props) => {
 
-  const student = props.student
-  const interviewer = props.interviewer
-  const interviewerName = interviewer.name
-  const onEdit = props.onEdit
-  const onDelete = props.onDelete
+  const student = props.student;
+  const interviewer = props.interviewer;
+  const interviewerName = interviewer.name;
+  const onEdit = props.onEdit;
+  const onDelete = props.onDelete;
 
 
   return (
@@ -26,24 +26,24 @@ const Show = (props) => {
       </section>
       <section className="appointment__card-right">
         <section className="appointment__actions">
-          <img 
-          src="images/edit.png" 
-          alt="Edit" 
-          className="appointment__actions-button" 
-          onClick={onEdit}
+          <img
+            src="images/edit.png"
+            alt="Edit"
+            className="appointment__actions-button"
+            onClick={onEdit}
           />
 
-          <img 
-          src="images/trash.png" 
-          alt="Delete" 
-          className="appointment__actions-button" 
-          onClick={()=>onDelete()}
+          <img
+            src="images/trash.png"
+            alt="Delete"
+            className="appointment__actions-button"
+            onClick={() => onDelete()}
           />
 
         </section>
       </section>
     </main>
-  )
-}
+  );
+};
 
-export default Show
+export default Show;
