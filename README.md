@@ -42,7 +42,14 @@ npm run cypress
 
 
 ## Gallery
+#### Booking the interview
 ![Booking the interview](https://github.com/Enired/scheduler/blob/master/docs/booking_interview.gif)
+#### Deleting the interview
+![Deleting the interview](https://github.com/Enired/scheduler/blob/master/docs/deleting_interview.gif)
+#### Editing the interview
+![Editing the interview](https://github.com/Enired/scheduler/blob/master/docs/editing_interview.gif)
+#### Error Messages
+![Error Messages](https://github.com/Enired/scheduler/blob/master/docs/error_messages.gif)
 
 
 ## Additional Goals
