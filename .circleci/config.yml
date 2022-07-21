@@ -19,21 +19,21 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
       - run: npm test
 
-deploy:
-  machine:
-    enabled: true
+  deploy:
+    machine:
+      enabled: true
 
-  working_directory: ~/client
+    working_directory: ~/client
 
-  steps:
-    - add_ssh_keys:
-        fingerprints:
-          - "f50:8a:3c:cd:53:a7:be:2a:97:60:ba:4c:2c:a7:2b:64"
-    - checkout
-    - run:
-        name: Push Master to Production
-        command: |
-          git push https://https://github.com/Enired/scheduler.git master:production
+    steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "f50:8a:3c:cd:53:a7:be:2a:97:60:ba:4c:2c:a7:2b:64"
+      - checkout
+      - run:
+          name: Push Master to Production
+          command: |
+            git push https://https://github.com/Enired/scheduler.git master:production
 
 workflows:
   version: 2
