@@ -29,11 +29,7 @@ const Appointment = (props) => {
   const id = props.id;
   const { mode, transition, back } = useVisualMode(interview ? SHOW : EMPTY);
 
-  //WITH save()
   const save = (name, interviewer) => {
-    // if(!name || !interviewer){
-    //   return
-    // }
 
     const someInterview = {
       student: name,

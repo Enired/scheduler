@@ -53,7 +53,6 @@ export const useApplicationData = () => {
       });
   };
 
-  //WITH cancelInterview
   const cancelInterview = (id) => {
     const appointment = {
       ...state.appointments[id],
