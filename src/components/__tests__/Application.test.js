@@ -143,7 +143,6 @@ describe('Application', () => {
     const appointment = appointments[1];
 
     fireEvent.click(getByAltText(appointment, 'Delete'));
-    // fireEvent.click(getByText(appointment, 'Save'));
 
     expect(getByText(appointment, /are you sure you want to delete this?/i));
 
@@ -164,7 +163,7 @@ describe('Application', () => {
     const appointment = appointments[1];
 
     fireEvent.click(getByAltText(appointment, 'Delete'));
-    // fireEvent.click(getByText(appointment, 'Save'));
+
 
     expect(getByText(appointment, /are you sure you want to delete this?/i));
 
