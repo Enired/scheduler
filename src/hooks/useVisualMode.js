@@ -5,28 +5,28 @@ export const useVisualMode = (initialMode) => {
   const [history, setHistory] = useState([initialMode]);
 
 
-  const transition = (newMode, replace=false) => {    
+  const transition = (newMode, replace = false) => {
     setMode(newMode);
-    if(replace){
-      const newHistory = [...history]
+    if (replace) {
+      const newHistory = [...history];
       newHistory.pop();
       setHistory([...newHistory, newMode]);
-    } else{
+    } else {
       setHistory([...history, newMode]);
     }
-    
-    } 
-      
+
+  }
+
   const back = () => {
-  
-    const newHistory = [...history]
-    if(newHistory.length >= 2){
+
+    const newHistory = [...history];
+    if (newHistory.length >= 2) {
       newHistory.pop();
     }
     setHistory(newHistory);
-    setMode(newHistory[newHistory.length-1]);
+    setMode(newHistory[newHistory.length - 1]);
   }
 
 
-  return {mode, transition, back};
+  return { mode, transition, back };
 }
