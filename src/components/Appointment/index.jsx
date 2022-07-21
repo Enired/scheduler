@@ -52,22 +52,12 @@ const Appointment = (props) => {
 
   };
 
-  const confirm = () => {
-    transition(CONFIRM);
-  };
-
-  const transitionCreate = () => {
-    transition(CREATE);
-  };
-
   return (
-
-
     <article className="appointment" data-testid="appointment">
       <Header time={time}></Header>
-      {mode === EMPTY && <Empty onAdd={transitionCreate} />}
+      {mode === EMPTY && <Empty onAdd={() => transition(CREATE)} />}
 
-      {mode === SHOW && <Show student={interview.student} interviewer={props.interview.interviewer} onEdit={() => transition(EDIT)} onDelete={confirm} />}
+      {mode === SHOW && <Show student={interview.student} interviewer={props.interview.interviewer} onEdit={() => transition(EDIT)} onDelete={() => transition(CONFIRM)} />}
 
       {mode === CREATE && <Form interviewers={props.interviewers} onSave={save} onCancel={back} />}
 
