@@ -42,7 +42,7 @@ npm run cypress
 
 
 ## Gallery
-
+![Booking the interview](https://github.com/Enired/scheduler/blob/master/docs/booking_interview.gif)
 
 
 ## Additional Goals
