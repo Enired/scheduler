@@ -107,8 +107,6 @@ test("getInterview returns null if no interview is booked", () => {
 });
 
 
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 test("getInterviewersForDay returns an array", () => {
   const result = getInterviewersForDay(state, "Monday");
   expect(Array.isArray(result)).toBe(true);
